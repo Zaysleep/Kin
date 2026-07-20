@@ -21,26 +21,30 @@ export default function About() {
    return (
       <section id="about" aria-labelledby="about-title" className="section-shell section-rule">
          <div className="editorial-container">
-            <div className="grid gap-12 lg:grid-cols-[minmax(0,0.75fr)_minmax(22rem,1.25fr)] lg:gap-20">
-               <div>
+            {/* About introduction */}
+            <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(22rem,1.2fr)] lg:gap-20">
+               <div className="min-w-0 lg:pr-6">
                   <p className="eyebrow">About the Studio</p>
 
-                  <h2 id="about-title" className="editorial-heading section-heading mt-5 max-w-[10ch]">
-                     Built independently. Made with care.
+                  <h2 id="about-title" className="editorial-heading mt-6 max-w-[13ch] text-[clamp(2.75rem,7vw,5.25rem)] leading-[1.02] sm:mt-7 sm:max-w-[14ch] lg:max-w-[11ch] lg:text-[clamp(3.5rem,5vw,5.25rem)]">
+                     <span className="block">Built independently.</span>
+
+                     <span className="mt-2 block">Made with care.</span>
                   </h2>
                </div>
 
-               <div className="lg:border-l lg:border-[var(--color-border)] lg:pl-10">
+               <div className="min-w-0 lg:border-l lg:border-[var(--color-border)] lg:pl-10">
                   <p className="font-[family-name:var(--font-serif)] text-2xl leading-snug sm:text-3xl">Kin is an independent lifestyle software studio created by Isaiah Brown.</p>
 
-                  <p className="body-copy mt-7">Every Kin product begins with a specific part of everyday life that could feel clearer, more useful, or more enjoyable. Each one is designed, developed, tested, and maintained independently.</p>
+                  <p className="body-copy mt-8">Every Kin product begins with a specific part of everyday life that could feel clearer, more useful, or more enjoyable. Each one is designed, developed, tested, and maintained independently.</p>
 
-                  <p className="body-copy mt-5">
+                  <p className="body-copy mt-6">
                      A background in software engineering, information technology, and operational systems shapes the approach: understand the real problem, build a dependable foundation, and keep the experience easy to navigate.
                   </p>
                </div>
             </div>
 
+            {/* Studio details */}
             <div className="mt-16 grid gap-10 border-y border-[var(--color-rule)] py-10 sm:mt-20 lg:grid-cols-[minmax(0,0.7fr)_minmax(20rem,1.3fr)] lg:gap-20">
                <div>
                   <p className="eyebrow">Small by Design</p>
@@ -59,6 +63,7 @@ export default function About() {
                </dl>
             </div>
 
+            {/* Product summary */}
             <div className="mt-16 sm:mt-20">
                <p className="eyebrow">The Work</p>
 
