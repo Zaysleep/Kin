@@ -1,26 +1,414 @@
 @import "tailwindcss";
 
+/* Kin global design tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+   color-scheme: light;
+
+   /* Base colors */
+   --color-stone: #f8f6f2;
+   --color-paper-alt: #f7f4ee;
+   --color-paper: #ffffff;
+   --color-ink: #111827;
+   --color-text-secondary: #5f6368;
+   --color-border: #ddd6c8;
+   --color-rule: #cfc7ba;
+
+   /* Shared studio accents */
+   --color-slate: #3d5a80;
+   --color-brass: #b08d57;
+
+   /* Product accents */
+   --color-allevin: #315b9a;
+   --color-sidewalk: #8b6046;
+   --color-sidewalk-olive: #667052;
+   --color-frontoffice: #a64b24;
+
+   /* Typography */
+   --font-sans: var(--font-inter), Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+   --font-serif: var(--font-newsreader), Newsreader, Georgia, "Times New Roman", serif;
+
+   /* Layout */
+   --page-width: 84rem;
+   --reading-width: 44rem;
+   --page-gutter: clamp(1.25rem, 4vw, 4rem);
+   --section-space: clamp(5rem, 8vw, 8rem);
+
+   /* Interaction */
+   --focus-color: #315b9a;
+   --transition-fast: 160ms ease;
+   --transition-standard: 240ms ease;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* Predictable sizing */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+   min-height: 100%;
+   background: var(--color-stone);
+   scroll-behavior: smooth;
+   scroll-padding-top: 6rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+   min-height: 100vh;
+   margin: 0;
+   overflow-x: clip;
+   background: var(--color-stone);
+   color: var(--color-ink);
+   font-family: var(--font-sans);
+   font-size: 1rem;
+   line-height: 1.65;
+   text-rendering: optimizeLegibility;
+   -webkit-font-smoothing: antialiased;
+}
+
+main {
+   display: block;
+   min-width: 0;
+}
+
+/* Basic element resets */
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+   margin: 0;
+}
+
+ul,
+ol {
+   margin: 0;
+   padding: 0;
+}
+
+p,
+li,
+dd,
+blockquote {
+   text-wrap: pretty;
+}
+
+button,
+input,
+textarea,
+select {
+   font: inherit;
+}
+
+button {
+   color: inherit;
+}
+
+img,
+picture,
+svg {
+   display: block;
+   max-width: 100%;
+}
+
+img {
+   height: auto;
+}
+
+a {
+   color: inherit;
+   text-decoration-thickness: 0.08em;
+   text-underline-offset: 0.2em;
+}
+
+a,
+button {
+   -webkit-tap-highlight-color: transparent;
+}
+
+/* Accessible keyboard focus */
+:focus-visible {
+   outline: 3px solid var(--focus-color);
+   outline-offset: 4px;
+}
+
+::selection {
+   background: #d9e2ef;
+   color: var(--color-ink);
+}
+
+/* Keep anchored sections clear of the header */
+[id] {
+   scroll-margin-top: 6rem;
+}
+
+/* Screen-reader-only content */
+.sr-only {
+   position: absolute;
+   width: 1px;
+   height: 1px;
+   padding: 0;
+   margin: -1px;
+   overflow: hidden;
+   white-space: nowrap;
+   border: 0;
+   clip: rect(0, 0, 0, 0);
+}
+
+/* Keyboard-accessible skip link */
+.skip-link {
+   position: fixed;
+   top: 1rem;
+   left: 1rem;
+   z-index: 1000;
+   min-height: 44px;
+   padding: 0.75rem 1rem;
+   background: var(--color-ink);
+   color: var(--color-paper);
+   font-size: 0.875rem;
+   font-weight: 600;
+   text-decoration: none;
+   transform: translateY(-180%);
+   transition: transform var(--transition-fast);
+}
+
+.skip-link:focus {
+   transform: translateY(0);
+}
+
+/* Shared page structure */
+.editorial-container {
+   width: min(calc(100% - (var(--page-gutter) * 2)), var(--page-width));
+   margin-inline: auto;
+}
+
+.reading-width {
+   width: min(100%, var(--reading-width));
+}
+
+.section-shell {
+   position: relative;
+   padding-block: var(--section-space);
+}
+
+.section-rule {
+   border-top: 1px solid var(--color-rule);
+}
+
+/* Editorial typography */
+.editorial-heading {
+   font-family: var(--font-serif);
+   font-weight: 500;
+   letter-spacing: -0.035em;
+   line-height: 0.98;
+   text-wrap: balance;
+}
+
+.section-heading {
+   font-size: clamp(2.75rem, 7vw, 6rem);
+}
+
+.feature-heading {
+   font-size: clamp(2.25rem, 5vw, 4.5rem);
+}
+
+.eyebrow {
+   color: var(--color-text-secondary);
+   font-size: 0.75rem;
+   font-weight: 600;
+   letter-spacing: 0.16em;
+   line-height: 1.4;
+   text-transform: uppercase;
+}
+
+.body-copy {
+   max-width: 46rem;
+   color: var(--color-text-secondary);
+   font-size: clamp(1rem, 1.5vw, 1.125rem);
+   line-height: 1.7;
+}
+
+.editorial-link {
+   display: inline-flex;
+   min-height: 44px;
+   align-items: center;
+   gap: 0.45rem;
+   font-size: 0.875rem;
+   font-weight: 600;
+   text-decoration: none;
+}
+
+.editorial-link::after {
+   content: "→";
+   transition: transform var(--transition-fast);
+}
+
+@media (hover: hover) {
+   .editorial-link:hover::after {
+      transform: translateX(0.25rem);
+   }
+}
+
+/* Temporary setup screen */
+.setup-screen {
+   display: grid;
+   min-height: 100vh;
+   place-items: center;
+   padding: var(--page-gutter);
+}
+
+.setup-content {
+   width: min(100%, 42rem);
+   text-align: center;
+}
+
+.setup-label {
+   margin-bottom: 1rem;
+   color: var(--color-text-secondary);
+   font-size: 0.75rem;
+   font-weight: 600;
+   letter-spacing: 0.16em;
+   text-transform: uppercase;
+}
+
+.setup-content h1 {
+   font-family: var(--font-serif);
+   font-size: clamp(5rem, 18vw, 10rem);
+   font-weight: 500;
+   letter-spacing: -0.07em;
+   line-height: 0.82;
+}
+
+.setup-description {
+   margin-top: 2rem;
+   color: var(--color-text-secondary);
+   font-size: 1rem;
+   line-height: 1.65;
+}
+
+/*
+   Mobile-only alignment
+   Applies to phones up to 640px wide.
+   This does not affect iPads, tablets, laptops, or desktop screens.
+*/
+@media (max-width: 40rem) {
+   :root {
+      /* Slightly smaller mobile page spacing */
+      --page-gutter: 1.25rem;
+      --section-space: 4.5rem;
+   }
+
+   /*
+      Center the text inside every main page section.
+      The header and footer are not changed by this rule.
+   */
+   main section {
+      text-align: center;
+   }
+
+   /* Keep section containers centered */
+   main section .editorial-container {
+      margin-inline: auto;
+   }
+
+   /* Center headings and paragraphs within their available width */
+   main section h1,
+   main section h2,
+   main section h3,
+   main section h4,
+   main section p,
+   main section blockquote {
+      margin-inline: auto;
+   }
+
+   /* Center shared text-width elements */
+   main section .reading-width,
+   main section .body-copy {
+      margin-inline: auto;
+   }
+
+   /* Center items produced by responsive grid layouts */
+   main section .grid {
+      justify-items: center;
+   }
+
+   /* Center section content groups */
+   main section article,
+   main section aside,
+   main section figure,
+   main section dl {
+      width: 100%;
+      margin-inline: auto;
+      text-align: center;
+   }
+
+   /* Center definition-list labels and values */
+   main section dt,
+   main section dd {
+      margin-inline: auto;
+      text-align: center;
+   }
+
+   /* Center lists without removing their markers */
+   main section ul,
+   main section ol {
+      width: 100%;
+      margin-inline: auto;
+      text-align: center;
+      list-style-position: inside;
+   }
+
+   /* Center images and product artwork */
+   main section img,
+   main section picture,
+   main section svg {
+      margin-inline: auto;
+   }
+
+   /* Center links and calls to action */
+   main section .editorial-link {
+      justify-content: center;
+      margin-inline: auto;
+   }
+
+   /*
+      Improve mobile editorial heading spacing.
+      This only changes line height on phone-sized screens.
+   */
+   .section-heading {
+      line-height: 1.02;
+   }
+}
+
+/* Wide desktop refinements */
+@media (min-width: 64rem) {
+   :root {
+      --page-gutter: clamp(2.5rem, 4.5vw, 4.5rem);
+      --section-space: clamp(7rem, 8vw, 9rem);
+   }
+
+   .section-heading {
+      letter-spacing: -0.045em;
+   }
+}
+
+/* Reduce motion when requested by the user */
+@media (prefers-reduced-motion: reduce) {
+   html {
+      scroll-behavior: auto;
+   }
+
+   *,
+   *::before,
+   *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      scroll-behavior: auto !important;
+      transition-duration: 0.01ms !important;
+   }
 }
