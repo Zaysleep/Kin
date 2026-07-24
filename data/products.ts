@@ -53,8 +53,8 @@ export const products: Product[] = [
       imageSrc: "/images/sidewalk-feature.png",
       imageAlt: "A warm city-guide scene representing local places, discovery, and memorable days.",
       accentColor: "var(--color-sidewalk)",
-      actionLabel: "Coming Soon",
-      href: null,
+      actionLabel: "Open Sidewalk",
+      href: "https://sidewalk-beta.vercel.app/",
    },
    {
       id: "frontoffice",
