@@ -6,6 +6,10 @@ const studioLinks = [
       href: "#products",
    },
    {
+      label: "Services",
+      href: "#services",
+   },
+   {
       label: "Philosophy",
       href: "#philosophy",
    },
@@ -23,6 +27,10 @@ const productLinks = [
    {
       label: "ALLEVIN",
       href: "https://allevin.vercel.app/",
+   },
+   {
+      label: "Sidewalk",
+      href: "https://sidewalk-beta.vercel.app/",
    },
    {
       label: "FrontOffice",
@@ -52,9 +60,10 @@ export default function Footer() {
    const currentYear = new Date().getFullYear();
 
    return (
-      <footer className="border-t border-[#4a463f] bg-[#1b1a17] text-[var(--color-paper)]">
+      <footer id="contact" className="border-t border-[#4a463f] bg-[#1b1a17] text-[var(--color-paper)]">
          <div className="editorial-container py-14 sm:py-16">
             <div className="grid gap-16 lg:grid-cols-[minmax(18rem,0.9fr)_minmax(0,1.4fr)] lg:gap-20">
+               {/* Studio identity */}
                <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
                   <a href="#top" aria-label="Return to the top of the Kin website" className="flex min-h-11 w-fit items-center no-underline">
                      <Image src="/images/kin.png" alt="Kin — Independent Software Studio" width={1000} height={1000} sizes="(max-width: 767px) 176px, 208px" className="h-auto w-44 object-contain brightness-0 invert sm:w-52" />
@@ -65,7 +74,9 @@ export default function Footer() {
                   <p className="mt-4 w-full max-w-md text-base leading-7 text-[#d0c8bc] lg:max-w-sm lg:text-sm lg:leading-6">An independent lifestyle software studio created, designed, developed, and maintained by Isaiah Brown.</p>
                </div>
 
+               {/* Footer directory */}
                <div className="grid gap-12 md:grid-cols-2 md:gap-x-10 lg:grid-cols-3 lg:gap-10">
+                  {/* Studio links */}
                   <nav aria-label="Footer studio navigation" className="border-t border-[#4a463f] pt-5 text-center md:text-left">
                      <p className="flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.16em] text-[#aaa296] uppercase md:justify-between">
                         <span>Studio</span>
@@ -87,6 +98,7 @@ export default function Footer() {
                      </ul>
                   </nav>
 
+                  {/* Product links */}
                   <nav aria-label="Kin products" className="border-t border-[#4a463f] pt-5 text-center md:text-left">
                      <p className="flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.16em] text-[#aaa296] uppercase md:justify-between">
                         <span>Products</span>
@@ -112,17 +124,10 @@ export default function Footer() {
                               </a>
                            </li>
                         ))}
-
-                        <li className="border-t border-[#302e2a]">
-                           <span className="flex min-h-14 items-center justify-center gap-3 py-3 text-base text-[#8e877c] md:justify-between">
-                              <span>Sidewalk</span>
-
-                              <span className="text-xs font-semibold tracking-[0.12em] uppercase">Soon</span>
-                           </span>
-                        </li>
                      </ul>
                   </nav>
 
+                  {/* Contact links */}
                   <nav aria-label="Contact Isaiah Brown" className="border-t border-[#4a463f] pt-5 text-center md:col-span-2 md:text-left lg:col-span-1">
                      <p className="flex items-center justify-center gap-3 text-xs font-semibold tracking-[0.16em] text-[#aaa296] uppercase md:justify-between">
                         <span>Connect</span>
@@ -153,10 +158,11 @@ export default function Footer() {
                </div>
             </div>
 
+            {/* Footer closing line */}
             <div className="mt-14 grid gap-4 border-t border-[#3b3832] pt-7 text-center text-sm leading-6 text-[#aaa296] md:grid-cols-2 md:items-end md:text-left lg:text-xs lg:leading-5">
                <p>© {currentYear} Kin. Independent Software Studio.</p>
 
-               <p className="md:text-right"></p>
+               <p className="md:text-right">Complexity belongs behind the scenes. Clarity belongs in the experience.</p>
             </div>
          </div>
       </footer>

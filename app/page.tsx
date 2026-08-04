@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Philosophy from "@/components/Philosophy";
+import Services from "@/components/Services";
 import StudioNotes from "@/components/StudioNotes";
 
 export default function Home() {
@@ -23,6 +24,8 @@ export default function Home() {
             <Philosophy />
 
             <StudioNotes />
+
+            <Services />
 
             <About />
          </main>
