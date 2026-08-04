@@ -10,16 +10,21 @@ const navigationLinks = [
    },
    {
       number: "02",
+      label: "Services",
+      href: "#services",
+   },
+   {
+      number: "03",
       label: "Philosophy",
       href: "#philosophy",
    },
    {
-      number: "03",
+      number: "04",
       label: "Studio Notes",
       href: "#studio-notes",
    },
    {
-      number: "04",
+      number: "05",
       label: "About",
       href: "#about",
    },
