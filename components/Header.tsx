@@ -8,7 +8,7 @@ const navigationLinks = [
       href: "#products",
    },
    {
-      label: "Services",
+      label: "Work With Kin",
       href: "#services",
    },
    {
@@ -36,12 +36,12 @@ export default function Header() {
             </a>
 
             <nav aria-label="Primary navigation" className="hidden md:block">
-               <ul className="flex list-none items-center gap-4 lg:gap-7 xl:gap-9">
+               <ul className="flex list-none items-center gap-3 lg:gap-6 xl:gap-8">
                   {navigationLinks.map((link) => (
                      <li key={link.href}>
                         <a
                            href={link.href}
-                           className="inline-flex min-h-11 items-center whitespace-nowrap text-[0.68rem] font-semibold tracking-[0.1em] text-[var(--color-text-secondary)] uppercase no-underline transition-colors duration-150 hover:text-[var(--color-ink)] lg:text-xs lg:tracking-[0.12em]"
+                           className="inline-flex min-h-11 items-center whitespace-nowrap text-[0.66rem] font-semibold tracking-[0.08em] text-[var(--color-text-secondary)] uppercase no-underline transition-colors duration-150 hover:text-[var(--color-ink)] lg:text-xs lg:tracking-[0.1em]"
                         >
                            {link.label}
                         </a>

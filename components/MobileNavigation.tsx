@@ -10,7 +10,7 @@ const navigationLinks = [
    },
    {
       number: "02",
-      label: "Services",
+      label: "Work With Kin",
       href: "#services",
    },
    {

@@ -6,7 +6,7 @@ const studioLinks = [
       href: "#products",
    },
    {
-      label: "Services",
+      label: "Work With Kin",
       href: "#services",
    },
    {
@@ -51,7 +51,7 @@ const contactLinks = [
    },
    {
       label: "Email",
-      href: "mailto:zaydidntwakeup@gmail.com",
+      href: "mailto:kinsoftwarecompany@gmail.com",
       external: false,
    },
 ];
